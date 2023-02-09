@@ -1,0 +1,21 @@
+.seller-auth{
+    height: 600px;
+    display: flex;
+}
+.signup{
+    background: blue;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    padding: 20px;
+    color: white;
+}
+.errormsg{
+    margin: 0;
+    padding-bottom: 20px;
+    color: darkorange;
+    font-weight: 600;
+    text-transform: uppercase;
+}

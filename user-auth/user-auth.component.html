@@ -1,0 +1,35 @@
+<div class="container" *ngIf="!isLoggedIn">
+    <div class="seller-auth">
+        <div class="signup">
+            <h1>User Signup</h1>
+            <form #userSignup = "ngForm" (ngSubmit)="signup(userSignup.value)" class="common-form">
+                <input class="form-input" type="text" ngModel name="name" placeholder="Enter your Name" autocomplete="off" />
+                <input class="form-input" type="email" ngModel name="email" placeholder="Enter your Email" autocomplete="off" />
+                <input class="form-input" type="password" ngModel name="password" placeholder="Enter your Password" autocomplete="off" />
+                <button class="form-button" style="margin-bottom: 20px;">Sign Up</button>
+                <a (click)="isLoggedIn = true" style="cursor: pointer;">Aleardy Have Account? Click to Login</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--------- Login UI -------->
+
+<div class="container" *ngIf="isLoggedIn">
+    <div class="seller-auth">
+        <div class="signup">
+            <h1>Seller Login</h1>
+            <!-- <p class="errormsg">{{hasError}}</p> -->
+            <form #userLogin = "ngForm" (ngSubmit)="login(userLogin.value)" class="common-form">
+                <p>{{authError | titlecase}}</p>
+                <input class="form-input" type="text" email ngModel name="email" placeholder="Enter Email" autocomplete="off" #email="ngModel"  required/>
+                <p class="invalid-input"><span *ngIf="email.invalid && email.touched">Please enter valid email</span></p>
+                <input class="form-input" type="password" ngModel name="password" minlength="2" maxlength="20" placeholder="Enter Password" autocomplete="off" #password="ngModel" required/>
+                <p class="invalid-input"><span *ngIf="password.invalid && password.touched">Please enter valid password</span></p>
+                <button [disabled]="userLogin.invalid" class="form-button" style="margin-bottom: 20px;">Login</button>
+                <a (click)="isLoggedIn = false" style="cursor: pointer;">Dont Have an Account? Click to Sign-Up</a>
+
+            </form>
+        </div>
+    </div>
+</div>

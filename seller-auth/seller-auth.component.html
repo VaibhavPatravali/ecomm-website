@@ -1,0 +1,32 @@
+<div class="container" *ngIf="!isSignedIn">
+    <div class="seller-auth">
+        <div class="signup">
+            <h1>Seller Sign-Up</h1>
+            <form #sellerSignup = "ngForm" (ngSubmit)="signUp(sellerSignup.value)" class="common-form">
+                <input class="form-input" type="text" ngModel name="name" placeholder="Enter Name" autocomplete="off" />
+                <input class="form-input" type="email" ngModel name="email" placeholder="Enter Email" autocomplete="off" />
+                <input class="form-input" type="password" ngModel name="password" placeholder="Enter Password" autocomplete="off" />
+                <button class="form-button" style="margin-bottom: 20px;">Sign Up</button>
+                <a (click)="isSignedIn = true" style="cursor: pointer;">Aleardy Have Account? Click to Login</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--------- Login UI -------->
+
+<div class="container"  *ngIf="isSignedIn">
+    <div class="seller-auth">
+        <div class="signup">
+            <h1>Seller Login</h1>
+            <p class="errormsg">{{hasError}}</p>
+            <form #sellerLogin = "ngForm" (ngSubmit)="login(sellerLogin.value)" class="common-form">
+                <input class="form-input" type="email" ngModel name="email" placeholder="Enter Email" autocomplete="off" />
+                <input class="form-input" type="password" ngModel name="password" placeholder="Enter Password" autocomplete="off" />
+                <button class="form-button" style="margin-bottom: 20px;">Login</button>
+                <a (click)="isSignedIn = false" style="cursor: pointer;">Dont Have an Account? Click to Sign-Up</a>
+
+            </form>
+        </div>
+    </div>
+</div>
